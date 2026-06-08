@@ -7,32 +7,52 @@ Coordenadas de cidade/foco são **`[lng, lat]`**. Tempo em **segundos**. `.json`
 ```jsonc
 {
   "meta":   { "titulo": "...", "slug": "...", "duracao": 941.72 },   // duracao = fim da última palavra
-  "pele":   { "bg","accent","text","muted","frost","fontDisplay" },  // HUD; mapa usa paleta feltro (03-ESTILO)
-  "mapa":   { "foco": [lng,lat], "cidades": { "chave": [lng,lat] }, "rotulos": { "chave": [lng,lat] } },
-  "faccoes":{ "franca": { "nome","cor","corFundo" }, ... },          // cor é sobrescrita pela paleta FELT
-  "regioes":{ "franca": ["France"], "italia": ["Italy"], ... },       // CHAVE -> nomes EXATOS do geojson (admin-0)
-  "lideres":{ "franca": { "facao","rotulo","sub" } },
-  "forca":  [[t, valor], ...],   "forcaMax": 600000,                  // contador derretendo no HUD
-  "hud":    { "timeline":true, "temperatura":true, "baixas":true },
+  "pele":   {
+    "bg","accent","text","muted","frost","fontDisplay",             // HUD
+    "neutral": "#CBB78B",                                            // cor da terra neutra
+    "felt":  { "faccaoKey": "#hex", ... },                          // paleta feltro por facção (sobrescreve faccoes.cor)
+    "flags": { "faccaoKey": "xx.svg", ... }                         // bandeiras em public/flags/ (opcional)
+  },
+  "mapa":   {
+    "center": [lng,lat], "scale": 280, "tilt": 12,                  // PROJEÇÃO e inclinação 2.5D (0 = plano) — POR VÍDEO
+    "foco":   [lng,lat],                                            // onde a câmera começa
+    "cidades":{ "chave": [lng,lat] }, "rotulos": { "chave": [lng,lat] },
+    "baseTerr":  [["regiaoKey","faccaoKey"], ...],                  // territórios já coloridos no início
+    "terrNames": [{ "t","reg","ll?","size?","rot?","hollow?" }],    // nomes de país na terra
+    "water":     [{ "t","ll":[lng,lat] }],                          // rótulos de mar (itálico)
+    "nomes":     { "cidadeKey": "Nome bonito" }                     // rótulos de cidade
+  },
+  "faccoes":{ "facaoKey": { "nome","cor","corFundo" }, ... },
+  "regioes":{ "chave": ["NomeExatoGeojson"], ... },                  // CHAVE -> nomes EXATOS do geojson (admin-0)
+  "lideres":{ "facaoKey": { "facao","rotulo","sub" } },              // o 1º líder = protagonista (alimenta indicadores)
+  "forca":  [[t, valor], ...],   "forcaMax": 600000,                 // contador derretendo no HUD
+  "hud":    { "timeline":true, "indicadores":true, "forcaLabel":"EXÉRCITO X" },
   "timeline": [ /* eventos */ ]
 }
 ```
 
+> **Projeção e pele vêm do spec** (não do motor). `mapa.center/scale/tilt` definem o teatro;
+> `pele.felt` + `mapa.baseTerr/terrNames/water/nomes` definem a cara. Trocar de vídeo = trocar
+> o spec; o motor (`engine.ts`/`MapScene.tsx`) NÃO deve ser editado por vídeo.
+
 ## Eventos — campos comuns
 
-`t0` (início, s) · `t1` (fim, s) · `fica` (true = persiste até o fim) · `prim` (primitiva) ·
-`cam` `{ "move", "alvo", "orbita" }` · posição por `em` (chave de cidade) **ou** `regiao` (chave) ·
-`pulso` (região pisca) · `facao`/`bandeira` (cor) · `texto` · `icone`.
+`t0` (início, s) · `t1` (fim, s) · `fica` (true = persiste até o fim; **não usar em líder que marcha**) ·
+`prim` (primitiva) · `cam` `{ "move", "alvo", "orbita", "giro" }` · posição por `em` (chave de cidade)
+**ou** `regiao` (chave) · `pulso` (região pisca) · `facao`/`bandeira` (cor) · `texto` · `icone`.
 
-`cam.move` ∈ `space · wide · pull-back · regional · drift · mid · track · push-in · close`.
-`cam.alvo` = chave de `cidades`/`rotulos`/`foco`. A câmera interpola entre keyframes (cada `cam` é um).
+`cam.move` ∈ `space · wide · pull-back · regional · drift · mid · track · push-in · close · closeup`.
+`cam.alvo` = chave de `cidades`/`rotulos`/`foco`. `cam.giro` = ângulo em graus (gira/inclina o plano;
+positivo/negativo = sentido). `cam.orbita:true` dá um giro leve automático. A câmera interpola entre
+keyframes (cada `cam` é um). **`closeup`** = aproximação bem fechada (apresentar uma região de perto).
 
 ## Primitivas (todas implementadas no motor)
 
 | prim | campos | o que desenha |
 | --- | --- | --- |
-| `leaderReveal` | `em, facao, rotulo, emblema?, foto?, fica?` | **ESTANDARTE** (ícone/coroa no topo + retrato com borda da facção + nome). É o elemento central; `fica:true` pra ficar no mapa. `emblema` troca o ícone do topo (padrão 👑). |
-| `estandarte` | `em, facao` | bandeira no mastro (usa SVG real de `public/flags/` via `FLAGS`; fallback colorido) |
+| `leaderReveal` | `em, facao, rotulo, emblema?, foto?, fica?` | **ESTANDARTE** (ícone/coroa no topo + retrato com borda da facção + nome). É o elemento central; `fica:true` pra ficar no mapa (NÃO usar se o líder vai marchar). `emblema` troca o ícone do topo (padrão 👑); `foto` = arquivo em `public/portraits/`. |
+| `leaderMarch` | `rota:[cidadeKey], modo, facao, rotulo, foto?, emblema?` | **ESTANDARTE QUE SE MOVE**: o medalhão do líder (com retrato) caminha pela rota. Use quando o personagem está se deslocando (marcha/fuga). |
+| `estandarte` | `em, facao` | bandeira no mastro (usa SVG real de `public/flags/` via `pele.flags`; fallback colorido) |
 | `marcador` | `em, icone` | medalhão escuro (borda branca) com ícone; ícone de lugar ganha rótulo |
 | `territoryAdvance` | `para:[regiaoKey], facao, fica?, pulso?` | pinta região(ões) na cor da facção (persiste com `fica`) |
 | `realce` | `regiao, pulso?` | destaca região citada (contorno que pulsa) sem pintar |

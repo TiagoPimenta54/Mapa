@@ -8,7 +8,7 @@ const FPS = 30;
 export const RemotionRoot: React.FC = () => {
   return (
     <Composition
-      id="Napoleao"
+      id="Mapa"
       component={MapScene}
       durationInFrames={Math.ceil((spec as any).meta.duracao * FPS)}
       fps={FPS}

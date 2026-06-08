@@ -8,8 +8,10 @@ export const H = 1080;
 export const FPS = 30;
 export const spec: any = specJson as any;
 
-const REF: [number, number] = [18, 50];
-const BASE = 900;
+// Projeção e inclinação vêm do spec (bloco "mapa"), com fallback neutro (mundo inteiro).
+// Cada vídeo define o seu teatro no spec.json — o motor não fixa nenhuma região.
+const REF: [number, number] = (spec.mapa && spec.mapa.center) || [20, 30];
+const BASE = (spec.mapa && spec.mapa.scale) || 280;
 export const projection = geoMercator().center(REF).scale(BASE).translate([W / 2, H / 2]);
 const pathGen = geoPath(projection as any);
 
@@ -74,15 +76,15 @@ export function regionFeatures(key: string): Feat[] {
 
 // ---------------- Câmera ----------------
 export const ZOOM: Record<string, number> = {
-  space: 0.5, wide: 0.78, "pull-back": 0.9, regional: 1.35, drift: 1.2,
-  mid: 1.7, track: 1.95, "push-in": 2.35, close: 2.8,
+  space: 0.62, wide: 1.0, "pull-back": 1.2, regional: 1.9, drift: 1.5,
+  mid: 2.3, track: 2.7, "push-in": 3.6, close: 4.4, closeup: 6.0,
 };
-export type Cam = { lng: number; lat: number; zoom: number; orbita: boolean };
-type KF = { frame: number; lng: number; lat: number; zoom: number; orbita: boolean };
+export type Cam = { lng: number; lat: number; zoom: number; orbita: boolean; yaw: number };
+type KF = { frame: number; lng: number; lat: number; zoom: number; orbita: boolean; yaw: number };
 
 function buildKeyframes(): KF[] {
   const foco = spec.mapa.foco;
-  const kfs: KF[] = [{ frame: 0, lng: foco[0], lat: foco[1], zoom: ZOOM.wide, orbita: false }];
+  const kfs: KF[] = [{ frame: 0, lng: foco[0], lat: foco[1], zoom: ZOOM.wide, orbita: false, yaw: 0 }];
   let prev: [number, number] = foco;
   const evs = [...spec.timeline].sort((a: any, b: any) => a.t0 - b.t0);
   for (const e of evs) {
@@ -94,6 +96,7 @@ function buildKeyframes(): KF[] {
       lng: tgt[0], lat: tgt[1],
       zoom: ZOOM[e.cam.move] ?? ZOOM.regional,
       orbita: !!e.cam.orbita,
+      yaw: typeof e.cam.giro === "number" ? e.cam.giro : (e.cam.orbita ? 8 : 0),
     });
   }
   return kfs.sort((a, b) => a.frame - b.frame);
@@ -113,6 +116,7 @@ export function cameraAt(frame: number): Cam {
     lng: a.lng + (b.lng - a.lng) * tt,
     lat: a.lat + (b.lat - a.lat) * tt,
     zoom: a.zoom + (b.zoom - a.zoom) * tt,
+    yaw: a.yaw + (b.yaw - a.yaw) * tt,
     orbita: b.orbita,
   };
 }
@@ -137,11 +141,16 @@ export function makeToScreen(cam: Cam) {
 export const MARK: Record<string, string> = {
   pino: "📍", castelo: "🏰", ponte: "🌉", coroa: "👑", ancora: "⚓", espadas: "⚔️",
   estrela: "⭐", montanha: "⛰️", palacio: "🏛️", mesquita: "🕌", torre: "🗼",
-  cidade: "🏙️", escudo: "🛡️", tenda: "⛺", igreja: "⛪",
+  cidade: "🏛️", escudo: "🛡️", tenda: "⛺", igreja: "⛪",
+  // ícones antigos/medievais (impérios, antiguidade) — amplie conforme o vídeo precisar
+  templo: "🏛️", coluna: "🏛️", elefante: "🐘", rio: "🌊", fogo: "🔥",
+  tesouro: "💰", moeda: "🪙", barco: "⛵", lanca: "🗡️", cavalo: "🐎",
+  capacete: "🪖", muralha: "🧱", livro: "📜", oraculo: "🔥",
 };
 export const EMOJI: Record<string, string> = {
   fire: "🔥", angry: "😠", fear: "😨", cry: "😢", skull: "💀", explosion: "💥",
-  eagle: "🦅", crown: "👑", boat: "⛵", horse: "🐎",
+  eagle: "🦅", crown: "👑", boat: "⛵", horse: "🐎", elefante: "🐘", cheer: "🙌",
+  reza: "🙏", coroa: "👑",
 };
 export function facaoColor(f?: string): string {
   return (f && spec.faccoes[f]?.cor) || spec.pele.accent;
@@ -176,9 +185,31 @@ export function years(): number[] {
   spec.timeline.forEach((e: any) => e.prim === "datedSeal" && s.add(e.ano));
   return [...s].sort((a, b) => a - b);
 }
+// indicadores acumulados p/ HUD do topo (batalhas, territórios conquistados até t)
+export function statsAt(frame: number): { batalhas: number; territorios: number } {
+  let batalhas = 0; const regs = new Set<string>();
+  const protag = spec.lideres ? Object.keys(spec.lideres)[0] : null;
+  for (const e of spec.timeline) {
+    if (e.t0 * FPS > frame) continue;
+    if (e.prim === "siegeFall" && e.facao === protag) batalhas++;
+    if (e.prim === "territoryAdvance" && e.facao === protag) (e.para || []).forEach((r: string) => regs.add(r));
+  }
+  return { batalhas, territorios: regs.size };
+}
+
+// marcos de ano com posição temporal (0..1) ao longo da duração — p/ timeline em linha
+export function yearMarks(): { ano: number; pos: number }[] {
+  const dur = spec.meta.duracao || 1;
+  const seen = new Set<number>();
+  const out: { ano: number; pos: number }[] = [];
+  [...spec.timeline].sort((a: any, b: any) => a.t0 - b.t0).forEach((e: any) => {
+    if (e.prim === "datedSeal" && !seen.has(e.ano)) { seen.add(e.ano); out.push({ ano: e.ano, pos: Math.max(0, Math.min(1, e.t0 / dur)) }); }
+  });
+  return out;
+}
 
 // ---------------- 2.5D: plano inclinado (estilo "History Mapped Out") ----------------
-export const TILT_ANGLE_DEG = 32;          // 0 = mapa plano | ~32 = 2.5D
+export const TILT_ANGLE_DEG = (spec.mapa && typeof spec.mapa.tilt === "number") ? spec.mapa.tilt : 0; // do spec; 0 = plano
 export const TILT = { ang: (TILT_ANGLE_DEG * Math.PI) / 180, P: 1700, ox: W / 2, oy: H * 0.5 };
 export function tilt(p: [number, number]): [number, number] {
   if (!TILT.ang) return p;
@@ -188,6 +219,9 @@ export function tilt(p: [number, number]): [number, number] {
   return [TILT.ox + dx * f, TILT.oy + dy * Math.cos(TILT.ang) * f];
 }
 export const tiltCSS = `perspective(${TILT.P}px) rotateX(${TILT_ANGLE_DEG}deg)`;
+export function tiltCSSyaw(yaw: number): string {
+  return `perspective(${TILT.P}px) rotateX(${TILT_ANGLE_DEG}deg) rotateZ(${yaw}deg)`;
+}
 export const tiltOrigin = `${TILT.ox}px ${TILT.oy}px`;
 
 // centroide (coords base) de uma regiao

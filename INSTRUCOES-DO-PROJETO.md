@@ -68,12 +68,16 @@ Eu **não** faço commits/push direto no GitHub; quem versiona é você. O `.git
 
 ## 4. Para um vídeo NOVO (passo a passo) — detalhe em `docs/05-PLAYBOOK.md`
 
-1. **Projeção/teatro** (`engine.ts`): `center`/`scale` da `geoMercator` pra centrar a região; `TILT_ANGLE_DEG`
-   (regional ~32; **mundial/marcas ~10–15 ou 0** — o tilt forte distorce o globo todo). O mapa-base é sempre o mundo.
-2. **Pele** (paleta + fonte + HUD) — **DIFERENTE de cada vídeo anterior**. `FELT`/`pele`.
-3. **Rótulos**: `TERR_NAMES` (nomes de país, com `ll`/`size`/`rot`), `WATER` (mares), `regioes` (nomes EXATOS do geojson).
-4. **Bandeiras/retratos**: `docs/06-ASSETS.md`.
-5. **timeline**: eu escrevo, casando os `t` reais (primitivas em `docs/01-SPEC.md`).
+**Tudo de um vídeo vive no `spec.json`. O motor (`engine.ts`/`MapScene.tsx`) NÃO se edita por vídeo.**
+
+1. **Projeção/teatro** — no `spec.mapa`: `center`/`scale` (centrar a região), `tilt`
+   (regional ~28–32; **mundial/marcas ~10–15 ou 0** — tilt forte distorce o globo todo). Mapa-base = mundo.
+2. **Pele** (paleta + fonte + HUD) — **DIFERENTE de cada vídeo**: `spec.pele` (`accent`, `fontDisplay`,
+   `neutral`, `felt` por facção, `flags`).
+3. **Rótulos** — no `spec.mapa`: `terrNames` (nomes de país, `ll`/`size`/`rot`/`hollow`), `water` (mares),
+   `nomes` (cidades). `regioes` com nomes EXATOS do geojson.
+4. **Bandeiras/retratos**: `docs/06-ASSETS.md` (retratos em `public/portraits/`, campo `foto`).
+5. **timeline**: casando os `t` reais (primitivas em `docs/01-SPEC.md`). Personagem que se move → `leaderMarch`.
 6. **Gate de qualidade** (checklist em `docs/05-PLAYBOOK.md`) antes de fechar.
 7. **Render** no Claude Code.
 

@@ -1,11 +1,11 @@
 {
-  "name": "napoleao-mapa",
+  "name": "historia-num-mapa",
   "version": "1.0.0",
-  "description": "A vida de Napoleao em um Mapa - animacao Remotion dirigida pelo word-json do Darkvi",
+  "description": "História num Mapa — motor Remotion 2.5D (base reutilizável)",
   "scripts": {
     "studio": "remotion studio",
-    "render": "remotion render Napoleao out/napoleao.mp4",
-    "still": "remotion still Napoleao out/frame.png --frame=1200"
+    "render": "remotion render Mapa out/video.mp4",
+    "still": "remotion still Mapa out/frame.png --frame=200"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.0",

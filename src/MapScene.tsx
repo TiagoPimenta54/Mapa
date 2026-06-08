@@ -10,55 +10,36 @@ import * as E from "./engine";
 const { fontFamily: FDISP } = loadDisplay();
 const { fontFamily: FLAB } = loadLabel();
 
-const HAS_AUDIO = false; // coloque public/narracao.mp3 e troque para true
+const HAS_AUDIO = false; // ligue após pôr public/narracao.mp3
 
-// ---- paleta feltro (estilo da referência) ----
-const FELT: Record<string, string> = {
-  franca: "#B23A2E", austria: "#7E5AA6", russia: "#4F8C46",
-  prussia: "#566E86", gra_bretanha: "#3C6E86", espanha: "#D38A36", coligacao: "#8C8676",
-};
+// ==== PELE E RÓTULOS — vêm do spec.json (cada vídeo traz os seus). ====
+// O motor não fixa cores/nomes de nenhum vídeo. Fallbacks são neutros/vazios.
+
+// paleta feltro por facção: spec.pele.felt = { faccaoKey: "#hex", ... }
+const FELT: Record<string, string> = (E.spec.pele && E.spec.pele.felt) || {};
 Object.keys(FELT).forEach((k) => { if (E.spec.faccoes[k]) E.spec.faccoes[k].cor = FELT[k]; });
 
-const NEUTRAL = "#CBB78B";
-const ACCENT = "#E6A92B";
+const NEUTRAL = (E.spec.pele && E.spec.pele.neutral) || "#CBB78B";
+const ACCENT = (E.spec.pele && E.spec.pele.accent) || "#E6A92B";
 
-// facção -> arquivo de bandeira em public/flags/ (ver docs/06-ASSETS.md).
-// Sem o arquivo, cai no retângulo colorido da facção (fallback).
-const FLAGS: Record<string, string> = {
-  franca: "fr.svg", austria: "at.svg", russia: "ru.svg",
-  prussia: "de.svg", gra_bretanha: "gb.svg", espanha: "es.svg",
-};
+// facção -> arquivo de bandeira em public/flags/: spec.pele.flags = { faccaoKey: "xx.svg" }
+const FLAGS: Record<string, string> = (E.spec.pele && E.spec.pele.flags) || {};
 
-// territórios sempre coloridos (mapa "vivo" como a referência)  [regiaoKey, facaoKey]
-const BASE_TERR: [string, string][] = [
-  ["russia", "russia"], ["austria", "austria"], ["prussia", "prussia"],
-  ["espanha", "espanha"], ["gra_bretanha", "gra_bretanha"], ["franca", "franca"],
-];
-// nomes de território (na terra, letra grande)
-// nomes de território. ll = posição custom [lng,lat] (senão usa o centro da região);
-// size = multiplicador de tamanho; rot = rotação; hollow = só contorno.
-const TERR_NAMES: { t: string; reg: string; rot?: number; hollow?: boolean; ll?: [number, number]; size?: number }[] = [
-  { t: "FRANÇA", reg: "franca", ll: [2.4, 47.2], rot: -4, size: 1.0 },
-  { t: "ÁUSTRIA", reg: "austria", ll: [14.4, 47.6], size: 0.7 },
-  { t: "PRÚSSIA", reg: "prussia", ll: [12.8, 52.3], size: 0.85 },
-  { t: "ESPANHA", reg: "espanha", ll: [-3.6, 40.0], rot: 4, size: 0.95, hollow: true },
-  { t: "REINO UNIDO", reg: "gra_bretanha", ll: [-1.8, 53.0], size: 0.62 },
-  { t: "RÚSSIA", reg: "russia", ll: [42, 56], size: 1.1, hollow: true },
-];
-const WATER: { t: string; ll: [number, number] }[] = [
-  { t: "Oceano Atlântico", ll: [-13, 44] },
-  { t: "Mar Mediterrâneo", ll: [7, 38.5] },
-  { t: "Mar do Norte", ll: [4, 56] },
-];
-const NAMES: Record<string, string> = {
-  lisboa: "Lisboa", moscou: "Moscou", ajaccio: "Ajaccio", brienne: "Brienne", paris: "Paris",
-  toulon: "Toulon", alexandria: "Alexandria", marengo: "Marengo", austerlitz: "Austerlitz",
-  berlim: "Berlim", tilsit: "Tilsit", niemen: "Niemen", madri: "Madri", borodino: "Borodino",
-  berezina: "Berezina", leipzig: "Leipzig", waterloo: "Waterloo", elba: "Elba",
-  santaHelena: "Santa Helena", viena: "Viena", rivoli: "Rivoli", friedland: "Friedland", jena: "Jena",
-};
+// territórios já coloridos no início (mapa "vivo"): spec.mapa.baseTerr = [[regiaoKey, faccaoKey], ...]
+const BASE_TERR: [string, string][] = (E.spec.mapa && E.spec.mapa.baseTerr) || [];
+
+// nomes de território na terra: spec.mapa.terrNames = [{ t, reg, ll?, size?, rot?, hollow? }, ...]
+const TERR_NAMES: { t: string; reg: string; rot?: number; hollow?: boolean; ll?: [number, number]; size?: number }[] =
+  (E.spec.mapa && E.spec.mapa.terrNames) || [];
+
+// rótulos de mar: spec.mapa.water = [{ t, ll }, ...]
+const WATER: { t: string; ll: [number, number] }[] = (E.spec.mapa && E.spec.mapa.water) || [];
+
+// nomes amigáveis de cidades/pontos: spec.mapa.nomes = { chave: "Nome" }
+const NAMES: Record<string, string> = (E.spec.mapa && E.spec.mapa.nomes) || {};
 const nice = (k: string) => NAMES[k] || k.charAt(0).toUpperCase() + k.slice(1);
-const PLACE = new Set(["pino", "castelo", "palacio", "estrela", "ancora", "torre", "cidade", "mesquita", "igreja"]);
+
+const PLACE = new Set(["pino", "castelo", "palacio", "estrela", "ancora", "torre", "cidade", "mesquita", "igreja", "templo", "rio", "muralha", "tesouro"]);
 
 type P = [number, number];
 const polyPath = (pts: P[]) => pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" ");
@@ -204,6 +185,20 @@ export const MapScene: React.FC = () => {
         </g>);
         break;
       }
+      case "leaderMarch": {
+        const lls = (e.rota || []).map((c: string) => E.resolveLngLat(c)).filter(Boolean) as P[];
+        if (lls.length >= 2) {
+          const pts = lls.map((ll) => E.project(ll));
+          const p = interpolate(frame, [e.t0 * FPS, (e.t1 ?? e.t0 + 4) * FPS], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+          ground.push(<g key={`${key}-r`} opacity={op}>
+            <path d={polyPath(pts)} fill="none" stroke="#fff" strokeOpacity={0.28} strokeWidth={4 / cam.zoom} strokeDasharray={`${8 / cam.zoom} ${8 / cam.zoom}`} />
+            <path d={partialPath(pts, p)} fill="none" stroke="#fff" strokeWidth={6 / cam.zoom} strokeLinecap="round" markerEnd="url(#arrow)" />
+          </g>);
+          const head = ovB(pointAlong(pts, p));
+          upright.push(<g key={key} transform={SA(head)}><Standard pos={head} color={E.facaoColor(e.facao)} name={e.rotulo || ""} emblem={e.emblema} op={op} foto={e.foto} /></g>);
+        }
+        break;
+      }
       case "leaderReveal": {
         const g = geo(); if (!g) break; const s = ov(g);
         upright.push(<g key={key} transform={SA(s)}><Standard pos={s} color={E.facaoColor(e.facao)} name={e.rotulo || ""} emblem={e.emblema} op={op} foto={e.foto} /></g>);
@@ -253,16 +248,14 @@ export const MapScene: React.FC = () => {
   });
   WATER.forEach((w, i) => {
     const c = E.project(w.ll); const s = b2s(c); if (s[0] < -80 || s[0] > E.W + 80 || s[1] < -80 || s[1] > E.H + 80) return;
-    ground.push(<text key={`w${i}`} x={c[0]} y={c[1]} fontSize={26 / cam.zoom} textAnchor="middle" fill="#9FC3E8" fillOpacity={0.85}
+    ground.push(<text key={`w${i}`} x={c[0]} y={c[1]} fontSize={20 / cam.zoom} textAnchor="middle" fill="#9FC3E8" fillOpacity={0.8}
       style={{ fontFamily: FDISP, fontStyle: "italic" }}>{w.t}</text>);
   });
 
-  // year boxes (janela em torno do ano ativo)
-  const ys = E.years(); const ya = E.yearAt(frame);
-  let boxes: number[] = [];
-  if (ya != null) { const i = ys.indexOf(ya); boxes = ys.slice(Math.max(0, i - 3), i + 4); }
+  // ano ativo (p/ destaque na timeline em linha)
+  const ya = E.yearAt(frame);
   const forca = E.forcaAt(t);
-  const PADX = 1200, PADT = 900; // estende o plano (lados + topo) p/ cobrir as bordas do trapézoide
+  const PADX = 2600, PADT = 2200, PADB = 1400; // estende o plano (lados/topo/baixo) p/ cobrir o tilt
   let evento: string | null = null;
   for (const ev of E.spec.timeline) {
     if (ev.prim === "datedSeal" && ev.t0 * FPS <= frame && frame <= (ev.t1 ?? ev.t0 + 6) * FPS) evento = ev.evento;
@@ -271,8 +264,8 @@ export const MapScene: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: "linear-gradient(180deg, #2A6FA8 0%, #1E588C 30%, #143F66 70%, #0E2E4C 100%)" }}>
       {/* TERRENO inclinado 2.5D */}
-      <div style={{ position: "absolute", left: -PADX, top: -PADT, width: E.W + 2 * PADX, height: E.H + PADT, transform: E.tiltCSS, transformOrigin: `${E.TILT.ox + PADX}px ${E.TILT.oy + PADT}px` }}>
-        <svg viewBox={`${-PADX} ${-PADT} ${E.W + 2 * PADX} ${E.H + PADT}`} width="100%" height="100%">
+      <div style={{ position: "absolute", left: -PADX, top: -PADT, width: E.W + 2 * PADX, height: E.H + PADT + PADB, transform: E.tiltCSSyaw(cam.yaw || 0), transformOrigin: `${E.TILT.ox + PADX}px ${E.TILT.oy + PADT}px` }}>
+        <svg viewBox={`${-PADX} ${-PADT} ${E.W + 2 * PADX} ${E.H + PADT + PADB}`} width="100%" height="100%">
           <defs>
             <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#3F86C0" /><stop offset="45%" stopColor="#235F95" /><stop offset="100%" stopColor="#10314F" />
@@ -302,13 +295,28 @@ export const MapScene: React.FC = () => {
       </svg>
 
       {/* HUD */}
-      <div style={{ position: "absolute", top: 28, left: 44, fontFamily: FDISP, fontSize: 30, color: ACCENT, letterSpacing: 2, textShadow: "0 2px 8px #000" }}>A vida de Napoleão em um Mapa</div>
+      <div style={{ position: "absolute", top: 28, left: 44, fontFamily: FDISP, fontSize: 30, color: ACCENT, letterSpacing: 2, textShadow: "0 2px 8px #000" }}>{(E.spec as any).meta.titulo}</div>
       {forca != null && (
         <div style={{ position: "absolute", top: 92, left: 46, fontFamily: FLAB, textShadow: "0 2px 8px #000" }}>
           <div style={{ fontSize: 46, color: ACCENT, lineHeight: 1 }}>{(forca / 1000).toFixed(0)} mil</div>
-          <div style={{ fontSize: 18, letterSpacing: 3, color: "#fff", opacity: 0.85 }}>GRANDE ARMÉE</div>
+          <div style={{ fontSize: 18, letterSpacing: 3, color: "#fff", opacity: 0.85 }}>{(E.spec as any).hud?.forcaLabel || "EXÉRCITO"}</div>
         </div>
       )}
+      {(E.spec as any).hud?.indicadores && (() => {
+        const st = E.statsAt(frame);
+        const chip = (label: string, valor: string | number) => (
+          <div style={{ minWidth: 96, background: "rgba(8,14,20,0.78)", border: `1.5px solid ${ACCENT}55`, borderRadius: 10, padding: "8px 14px", textAlign: "center", backdropFilter: "blur(2px)" }}>
+            <div style={{ fontFamily: FDISP, fontSize: 30, fontWeight: 600, color: ACCENT, lineHeight: 1 }}>{valor}</div>
+            <div style={{ fontFamily: FLAB, fontSize: 12, letterSpacing: 2, color: "#F4ECD8", opacity: 0.8, marginTop: 3, textTransform: "uppercase" }}>{label}</div>
+          </div>
+        );
+        return (
+          <div style={{ position: "absolute", top: 28, right: 40, display: "flex", gap: 10, textShadow: "0 2px 8px #000" }}>
+            {chip("Batalhas", st.batalhas)}
+            {chip("Territórios", st.territorios)}
+          </div>
+        );
+      })()}
       {hud}
       {/* legenda do evento (documentário) */}
       {evento && (
@@ -318,13 +326,26 @@ export const MapScene: React.FC = () => {
           </div>
         </div>
       )}
-      {/* caixas de ano */}
-      {boxes.length > 0 && (
-        <div style={{ position: "absolute", bottom: 46, width: "100%", display: "flex", justifyContent: "center", gap: 10 }}>
-          {boxes.map((y) => (
-            <div key={y} style={{ minWidth: 92, textAlign: "center", padding: "8px 4px", borderRadius: 8, fontFamily: FLAB, fontSize: 26, fontWeight: 600,
-              background: y === ya ? "#0a0f15" : "#F3ECD8", color: y === ya ? ACCENT : "#1b2430", border: y === ya ? `2px solid ${ACCENT}` : "2px solid #c9b68a", boxShadow: "0 4px 10px rgba(0,0,0,.4)" }}>{y}</div>
-          ))}
+      {/* timeline em linha (ponta a ponta) */}
+      {(E.spec as any).hud?.timeline && (
+        <div style={{ position: "absolute", bottom: 40, left: 80, right: 80, height: 44 }}>
+          {/* trilho */}
+          <div style={{ position: "absolute", left: 0, right: 0, top: 20, height: 4, borderRadius: 2, background: "rgba(244,236,216,0.18)" }} />
+          {/* progresso */}
+          <div style={{ position: "absolute", left: 0, top: 20, height: 4, borderRadius: 2, width: `${Math.min(100, (frame / ((E.spec as any).meta.duracao * FPS)) * 100)}%`, background: ACCENT, boxShadow: `0 0 10px ${ACCENT}` }} />
+          {/* cabeçote */}
+          <div style={{ position: "absolute", top: 14, left: `${Math.min(100, (frame / ((E.spec as any).meta.duracao * FPS)) * 100)}%`, width: 16, height: 16, marginLeft: -8, borderRadius: "50%", background: ACCENT, boxShadow: `0 0 12px ${ACCENT}, 0 2px 6px #000` }} />
+          {/* marcos de ano */}
+          {E.yearMarks().map((m) => {
+            const ativo = m.ano === ya;
+            const label = m.ano < 0 ? `${-m.ano} a.C.` : `${m.ano}`;
+            return (
+              <div key={m.ano} style={{ position: "absolute", left: `${m.pos * 100}%`, top: 0, transform: "translateX(-50%)", textAlign: "center" }}>
+                <div style={{ fontFamily: FLAB, fontSize: ativo ? 18 : 13, fontWeight: 600, letterSpacing: 1, color: ativo ? ACCENT : "rgba(244,236,216,0.7)", textShadow: "0 2px 6px #000", whiteSpace: "nowrap", transition: "none" }}>{label}</div>
+                <div style={{ width: ativo ? 3 : 2, height: ativo ? 12 : 8, margin: "2px auto 0", background: ativo ? ACCENT : "rgba(244,236,216,0.45)" }} />
+              </div>
+            );
+          })}
         </div>
       )}
       {/* vinheta */}
@@ -406,7 +427,7 @@ const Genealogia: React.FC<{ e: any; op: number }> = ({ e, op }) => {
   return (
     <div style={{ position: "absolute", inset: 0, opacity: op }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 45%, rgba(8,12,18,0.45) 0%, rgba(6,9,14,0.82) 100%)" }} />
-      <div style={{ position: "absolute", top: 70, width: "100%", textAlign: "center", fontFamily: FDISP, fontSize: 40, color: ACCENT, letterSpacing: 2, textShadow: "0 2px 10px #000" }}>Linhagem dos Bonaparte</div>
+      <div style={{ position: "absolute", top: 70, width: "100%", textAlign: "center", fontFamily: FDISP, fontSize: 40, color: ACCENT, letterSpacing: 2, textShadow: "0 2px 10px #000" }}>{e.titulo || "Linhagem"}</div>
       <svg viewBox={`0 0 ${E.W} ${E.H}`} width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
         {ligacoes.map(([a, b], i) => { const pa = pos[a], pb = pos[b]; if (!pa || !pb) return null; return <line key={i} x1={pa[0]} y1={pa[1] + R} x2={pb[0]} y2={pb[1] - R} stroke={ACCENT} strokeWidth={3} opacity={0.8} />; })}
         {pessoas.map((p: any, i: number) => {
