@@ -1,33 +1,27 @@
-# 00 — Visão geral (base "História num Mapa" / Remotion 2.5D)
+# 00 — Visão geral e mapa de arquivos
 
-Esta pasta `docs/` é a **base**: documenta tudo que é preciso pra produzir uma animação. O fluxo é:
-
-```
-roteiro (.txt)  →  locução + word-json (Darkvi)  →  spec.json  →  render (Claude Code / Studio)
-```
-
-- **Roteiro**: narração crua (vide o roteirista). Vira locução no Darkvi.
-- **Word-json**: cada palavra com `start`/`end`. É a régua de tempo dos eventos.
-- **spec.json**: o vídeo inteiro como dado (este projeto lê `src/data/spec.json`). Quem escreve isto sou eu (Claude), casando cada beat no `t` real do word-json. **Contrato completo → `01-SPEC.md`.**
-- **Render**: você roda no Claude Code/PC a partir do repo (`git pull` → `npm install` → `npx remotion studio`).
-  Eu não renderizo; eu escrevo o spec e ajusto o motor. **Versionamento**: o repo `TiagoPimenta54/Mapa`
-  é a fonte da verdade — eu entrego os arquivos, você dá `git commit/push`.
+Esta pasta `docs/` é a **base técnica** do motor. O processo (pipeline, divisão de trabalho, regras) está
+no manual-mestre **`INSTRUCOES-DO-PROJETO.md`** — não repetimos aqui. Este doc é a referência de **onde
+está cada coisa** no projeto.
 
 ## Mapa de arquivos
 
 | Arquivo | Papel |
 | --- | --- |
-| `src/data/spec.json` | o vídeo como dado (editar aqui muda a animação) |
-| `src/data/countries.geo.json` | mapa base admin-0 (property `name`) |
-| `src/engine.ts` | projeção, câmera por keyframes, tilt 2.5D, emoji, helpers |
-| `src/MapScene.tsx` | render por primitiva (terra inclinada + medalhões/estandartes em pé + HUD) |
-| `src/Root.tsx` | Composition (duração = `meta.duracao × fps`) |
-| `public/portraits/` | retratos `NN-nome.png` usados em `leaderReveal.foto` e `genealogia` |
+| `INSTRUCOES-DO-PROJETO.md` | manual-mestre (processo + regras + índice dos docs) |
+| `src/data/spec.json` | o vídeo como dado — editar aqui muda a animação, sem tocar no motor |
+| `src/data/countries.geo.json` | mapa-base admin-0 do mundo (property `name`) |
+| `src/engine.ts` | núcleo puro: projeção, câmera por keyframes, tilt 2.5D, emoji/marks, helpers |
+| `src/MapScene.tsx` | render por primitiva (terra inclinada + medalhões/estandartes em pé + HUD) + as peles (`FELT`, `TERR_NAMES`, `WATER`…) |
+| `src/Root.tsx` | a Composition (duração = `meta.duracao × fps`) |
+| `public/flags/` | bandeiras `iso2.svg` (modernas — aproximação; trocar por históricas quando der) |
+| `public/portraits/` | retratos `NN-nome.png` p/ `leaderReveal.foto` e `genealogia` |
 | `public/narracao.mp3` | locução (opcional; ligar `HAS_AUDIO`) |
-| `docs/*` | esta base |
+| `docs/01–08` | esta base técnica |
 
-## Para um vídeo novo
+## Os tunáveis (onde mexer pra ajustar)
+- **Projeção/teatro** (`engine.ts`): `center`/`scale` da `geoMercator`, `TILT_ANGLE_DEG`, níveis de `ZOOM`.
+- **Pele/rótulos** (`MapScene.tsx`): `FELT`, `FLAGS`, `BASE_TERR`, `TERR_NAMES`, `WATER`, `NEUTRAL`, `ACCENT`.
+- **Conteúdo** (`spec.json`): blocos `meta`/`pele`/`mapa`/`faccoes`/`regioes`/`lideres`/`forca`/`hud`/`timeline`.
 
-1. Escrevo o `Roteiro.txt`. 2. Você gera locução + word-json no Darkvi. 3. Eu escrevo o `spec.json`
-casando os `t` reais (seguindo `01-SPEC.md` + `03-ESTILO.md`). 4. (Opcional) você joga retratos em
-`public/portraits/`. 5. Você renderiza no Claude Code. 6. Iteramos com prints.
+Pipeline e receita de um vídeo novo: `INSTRUCOES-DO-PROJETO.md` (§2 e §4) + `05-PLAYBOOK.md`.

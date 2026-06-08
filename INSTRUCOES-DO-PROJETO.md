@@ -6,6 +6,25 @@ mapa-mestre que aponta pra eles e fixa as regras que **não** podem ser quebrada
 
 ---
 
+## Como usar (início de sessão)
+
+O projeto vive em **dois lugares**, e cada um liga um "modo":
+
+**1. Roteirista** — fica **avulso na memória do projeto** (`1-roteirista.md`), fora do repo, porque é a
+etapa criativa anterior ao Remotion. **Ative quando o assunto é escrever a história:** chega um tema/título
+("novo vídeo sobre…", "roteiriza isso", "tenho um tema"). Ele escreve a narração documentário e entrega
+**um `Roteiro.txt`** por título — prosa crua, pronta pra locução, densa em nomes/datas/números/parentescos,
+tudo "animável no mapa". Terminado o roteiro, a bola passa pra produção (este repo).
+
+**2. Produção (este repo, GitHub `TiagoPimenta54/Mapa`)** — todo o resto: locução → word-json → `spec.json`
+→ render. **Ative quando o assunto é transformar o roteiro em vídeo:** "vamos montar o spec", "ajusta a
+câmera", "renderiza", "o mapa tá cortando". Aqui valem o pipeline (§2), as regras (§5) e os docs (`docs/`).
+
+Regra prática: **história/texto → roteirista** · **mapa/motor/spec/render → repo**. O roteirista entrega o
+`Roteiro.txt`; o repo cuida de tudo dali pra frente.
+
+---
+
 ## 1. O que é
 
 Vídeos no estilo "história num mapa" (referência: History Mapped Out): mapa-múndi 2.5D inclinado, terra
@@ -75,7 +94,7 @@ Eu **não** faço commits/push direto no GitHub; quem versiona é você. O `.git
 
 | Doc | Conteúdo |
 | --- | --- |
-| `00-VISAO-GERAL.md` | pipeline e mapa de arquivos |
+| `00-VISAO-GERAL.md` | mapa de arquivos e tunáveis (onde mexer) |
 | `01-SPEC.md` | contrato do `spec.json` (todas as primitivas e campos) |
 | `02-ENGINE.md` | motor: projeção, mapa global, câmera, 2.5D, camadas |
 | `03-ESTILO.md` | sistema visual (oceano, feltro, estandartes, HUD, genealogia) |
@@ -83,6 +102,7 @@ Eu **não** faço commits/push direto no GitHub; quem versiona é você. O `.git
 | `05-PLAYBOOK.md` | receita de um vídeo novo + gate de qualidade |
 | `06-ASSETS.md` | bandeiras, retratos, ícones (como guardar e referenciar) |
 | `07-LICOES.md` | armadilhas já resolvidas |
+| `08-REFERENCIA-RAPIDA.md` | narração→primitiva, correções de transcrição, atlas de coords |
 
 ## 7. Rodar (resumo)
 

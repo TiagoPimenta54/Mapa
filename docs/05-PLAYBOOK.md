@@ -11,8 +11,8 @@ mesmo padrão visual sem retrabalho de motor.
 - **Bandeiras/retratos**: ver `06-ASSETS.md`.
 
 ## 1. Roteiro → locução → word-json
-Escrevo `Roteiro.txt` (documentário, presente, cadeia causal). Você gera locução + word-json no Darkvi.
-`meta.duracao` = fim da última palavra.
+O roteiro vem do **roteirista** (agente avulso; ver `INSTRUCOES-DO-PROJETO.md` §"Como usar"): narração
+documentário, presente, cadeia causal. Locução + word-json no Darkvi. `meta.duracao` = fim da última palavra.
 
 ## 2. Pele e identidade (não repetir entre vídeos)
 - `pele` no spec (HUD) + paleta **FELT** (`MapScene.tsx`): cor por facção. Cores distintas, nada de
@@ -48,8 +48,7 @@ Para cada beat, escolho a primitiva (tabela em `01-SPEC.md`). Padrões fixos do 
 - [ ] Correções de transcrição aplicadas em rótulo/chave/iso.
 
 ## 7. Render (você, no Claude Code)
-`npm install` → `npx remotion studio` (preview) → `npx remotion render Napoleao out/video.mp4`.
-Iteração por print: você manda, eu ajusto `ll`/`size`/`cam`/`TILT`/paleta.
+Comandos em `04-RENDER-E-FOTOS.md`. Iteração por print: você manda, eu ajusto `ll`/`size`/`cam`/`TILT`/paleta.
 
 ## Tunáveis (resumo)
 `engine.ts`: projeção (`center`/`scale`), `TILT_ANGLE_DEG`, `ZOOM` (níveis de câmera).
