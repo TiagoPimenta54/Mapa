@@ -1,0 +1,3 @@
+Coloque aqui os retratos: napoleao.png, josephine.png, alexandre.png, etc.
+Quadrados (~400x400). O recorte é circular. Referencie pelo nome do arquivo
+em spec.json: leaderReveal.foto e genealogia.pessoas[].foto.

@@ -1,0 +1,2134 @@
+{
+  "meta": {
+    "titulo": "A vida de Napoleão em um Mapa",
+    "slug": "napoleao-vida-mapa",
+    "duracao": 941.72
+  },
+  "pele": {
+    "bg": "#0B0E13",
+    "accent": "#E6A92B",
+    "text": "#FFFFFF",
+    "muted": "#C9BFA6",
+    "frost": "rgba(8,11,17,0.82)",
+    "fontDisplay": "Fraunces"
+  },
+  "mapa": {
+    "foco": [
+      12.0,
+      48.0
+    ],
+    "cidades": {
+      "lisboa": [
+        -9.14,
+        38.72
+      ],
+      "moscou": [
+        37.62,
+        55.75
+      ],
+      "ajaccio": [
+        8.74,
+        41.93
+      ],
+      "corsega": [
+        9.1,
+        42.15
+      ],
+      "brienne": [
+        4.52,
+        48.39
+      ],
+      "paris": [
+        2.35,
+        48.85
+      ],
+      "toulon": [
+        5.93,
+        43.12
+      ],
+      "alpes": [
+        7.0,
+        45.5
+      ],
+      "lodi": [
+        9.5,
+        45.31
+      ],
+      "arcole": [
+        11.3,
+        45.36
+      ],
+      "rivoli": [
+        10.81,
+        45.57
+      ],
+      "malta": [
+        14.51,
+        35.9
+      ],
+      "alexandria": [
+        29.92,
+        31.2
+      ],
+      "piramides": [
+        31.13,
+        29.98
+      ],
+      "aboukir": [
+        30.06,
+        31.31
+      ],
+      "marengo": [
+        8.77,
+        44.86
+      ],
+      "trafalgar": [
+        -6.04,
+        36.18
+      ],
+      "austerlitz": [
+        16.88,
+        49.15
+      ],
+      "viena": [
+        16.37,
+        48.21
+      ],
+      "berlim": [
+        13.4,
+        52.52
+      ],
+      "jena": [
+        11.59,
+        50.93
+      ],
+      "auerstedt": [
+        11.55,
+        51.25
+      ],
+      "friedland": [
+        21.01,
+        54.44
+      ],
+      "tilsit": [
+        21.88,
+        55.08
+      ],
+      "niemen": [
+        23.9,
+        54.9
+      ],
+      "vilnius": [
+        25.28,
+        54.69
+      ],
+      "smolensk": [
+        32.05,
+        54.78
+      ],
+      "madri": [
+        -3.7,
+        40.42
+      ],
+      "napoles": [
+        14.27,
+        40.85
+      ],
+      "amsterda": [
+        4.9,
+        52.37
+      ],
+      "kassel": [
+        9.49,
+        51.31
+      ],
+      "varsovia": [
+        21.01,
+        52.23
+      ],
+      "londres": [
+        -0.13,
+        51.51
+      ],
+      "borodino": [
+        35.82,
+        55.51
+      ],
+      "berezina": [
+        28.5,
+        54.32
+      ],
+      "leipzig": [
+        12.37,
+        51.34
+      ],
+      "reno": [
+        8.27,
+        50.0
+      ],
+      "elba": [
+        10.3,
+        42.78
+      ],
+      "golfeJuan": [
+        7.07,
+        43.57
+      ],
+      "waterloo": [
+        4.4,
+        50.68
+      ],
+      "santaHelena": [
+        -11,
+        -16
+      ],
+      "rotaExilio": [
+        -6,
+        16
+      ]
+    },
+    "rotulos": {
+      "imperio": [
+        12.0,
+        48.0
+      ],
+      "estepeRussa": [
+        40.0,
+        55.0
+      ],
+      "atlanticoSul": [
+        -5.7,
+        -12.0
+      ],
+      "italiaC": [
+        12.5,
+        43.0
+      ]
+    }
+  },
+  "faccoes": {
+    "franca": {
+      "nome": "França",
+      "cor": "#A6231C",
+      "corFundo": "#5C120E"
+    },
+    "austria": {
+      "nome": "Áustria",
+      "cor": "#6E5A86",
+      "corFundo": "#3A2F47"
+    },
+    "russia": {
+      "nome": "Rússia",
+      "cor": "#3F7A3C",
+      "corFundo": "#23461F"
+    },
+    "prussia": {
+      "nome": "Prússia",
+      "cor": "#46586E",
+      "corFundo": "#27313E"
+    },
+    "gra_bretanha": {
+      "nome": "Grã-Bretanha",
+      "cor": "#2E5560",
+      "corFundo": "#173039"
+    },
+    "espanha": {
+      "nome": "Espanha",
+      "cor": "#C2792A",
+      "corFundo": "#6E4416"
+    },
+    "coligacao": {
+      "nome": "Coligação",
+      "cor": "#8A8474",
+      "corFundo": "#4E4A40"
+    }
+  },
+  "regioes": {
+    "franca": [
+      "France"
+    ],
+    "belgica": [
+      "Belgium"
+    ],
+    "holanda": [
+      "Netherlands"
+    ],
+    "italia": [
+      "Italy"
+    ],
+    "alemanha": [
+      "Germany"
+    ],
+    "espanha": [
+      "Spain"
+    ],
+    "portugal": [
+      "Portugal"
+    ],
+    "polonia": [
+      "Poland"
+    ],
+    "austria": [
+      "Austria"
+    ],
+    "russia": [
+      "Russia"
+    ],
+    "egito": [
+      "Egypt"
+    ],
+    "inglaterra": [
+      "United Kingdom"
+    ]
+  },
+  "lideres": {
+    "franca": {
+      "facao": "franca",
+      "rotulo": "Napoleão Bonaparte",
+      "sub": "Imperador dos Franceses"
+    },
+    "russia": {
+      "facao": "russia",
+      "rotulo": "Czar Alexandre I",
+      "sub": "Império Russo"
+    }
+  },
+  "forca": [
+    [
+      598.98,
+      600000
+    ],
+    [
+      619.3,
+      540000
+    ],
+    [
+      631.14,
+      470000
+    ],
+    [
+      638.56,
+      420000
+    ],
+    [
+      654.52,
+      360000
+    ],
+    [
+      666.98,
+      250000
+    ],
+    [
+      678.4,
+      200000
+    ],
+    [
+      700.0,
+      150000
+    ],
+    [
+      710.24,
+      120000
+    ],
+    [
+      727.38,
+      100000
+    ],
+    [
+      735.06,
+      95000
+    ]
+  ],
+  "forcaMax": 600000,
+  "hud": {
+    "timeline": true,
+    "temperatura": true,
+    "baixas": true,
+    "distancia": true
+  },
+  "timeline": [
+    {
+      "t0": 0.04,
+      "t1": 6.4,
+      "prim": "legenda",
+      "texto": "De Lisboa às portas de Moscou",
+      "cam": {
+        "move": "wide",
+        "alvo": "imperio"
+      }
+    },
+    {
+      "t0": 0.04,
+      "t1": 29.0,
+      "prim": "conexao",
+      "de": [
+        "lisboa",
+        "moscou"
+      ],
+      "estilo": "arco",
+      "cam": {
+        "move": "wide",
+        "alvo": "imperio"
+      }
+    },
+    {
+      "t0": 3.94,
+      "t1": 941.72,
+      "prim": "marcador",
+      "em": "lisboa",
+      "icone": "pino",
+      "fica": true
+    },
+    {
+      "t0": 5.54,
+      "t1": 941.72,
+      "prim": "marcador",
+      "em": "moscou",
+      "icone": "pino",
+      "fica": true
+    },
+    {
+      "t0": 6.38,
+      "t1": 17.68,
+      "prim": "statFinal",
+      "texto": "+40 milhões de europeus sob suas leis",
+      "centro": true,
+      "cam": {
+        "move": "pull-back",
+        "alvo": "paris"
+      }
+    },
+    {
+      "t0": 17.72,
+      "t1": 29.04,
+      "prim": "callout",
+      "em": "imperio",
+      "texto": "Treze anos depois, morre exilado no Atlântico Sul",
+      "cam": {
+        "move": "pull-back"
+      }
+    },
+    {
+      "t0": 29.08,
+      "t1": 38.02,
+      "prim": "kicker",
+      "texto": "A vida de Napoleão Bonaparte"
+    },
+    {
+      "t0": 38.06,
+      "t1": 39.44,
+      "prim": "kicker",
+      "texto": "Começa numa ilha",
+      "cam": {
+        "move": "push-in",
+        "alvo": "ajaccio"
+      }
+    },
+    {
+      "t0": 39.62,
+      "t1": 50.22,
+      "prim": "leaderReveal",
+      "facao": "franca",
+      "em": "ajaccio",
+      "rotulo": "Napoleão Bonaparte",
+      "cam": {
+        "move": "push-in",
+        "alvo": "ajaccio",
+        "orbita": true
+      }
+    },
+    {
+      "t0": 40.0,
+      "t1": 56.0,
+      "prim": "datedSeal",
+      "ano": 1769,
+      "evento": "Nasce em Ajaccio, na Córsega"
+    },
+    {
+      "t0": 45.0,
+      "t1": 56.0,
+      "prim": "genealogia",
+      "pessoas": [
+        {
+          "id": "carlo",
+          "nome": "Carlo Buonaparte",
+          "papel": "pai",
+          "geracao": 0
+        },
+        {
+          "id": "letizia",
+          "nome": "Letizia Ramolino",
+          "papel": "mãe",
+          "geracao": 0
+        },
+        {
+          "id": "nap",
+          "nome": "Napoleão",
+          "papel": "filho",
+          "geracao": 1
+        }
+      ],
+      "layout": "arvore",
+      "ligacoes": [
+        [
+          "carlo",
+          "nap"
+        ],
+        [
+          "letizia",
+          "nap"
+        ]
+      ]
+    },
+    {
+      "t0": 50.0,
+      "t1": 63.0,
+      "prim": "estandarte",
+      "em": "ajaccio",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 63.0,
+      "t1": 104.0,
+      "prim": "estandarte",
+      "em": "brienne",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 63.68,
+      "t1": 71.92,
+      "prim": "marchRoute",
+      "rota": [
+        "ajaccio",
+        "brienne"
+      ],
+      "modo": "advance",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "brienne"
+      }
+    },
+    {
+      "t0": 66.0,
+      "t1": 941.72,
+      "prim": "marcador",
+      "em": "brienne",
+      "icone": "castelo",
+      "fica": true
+    },
+    {
+      "t0": 94.28,
+      "t1": 941.72,
+      "prim": "marcador",
+      "em": "paris",
+      "icone": "palacio",
+      "fica": true
+    },
+    {
+      "t0": 104.0,
+      "t1": 133.0,
+      "prim": "estandarte",
+      "em": "toulon",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 104.74,
+      "t1": 107.57,
+      "prim": "kicker",
+      "texto": "A chance aparece em Toulon",
+      "cam": {
+        "move": "push-in",
+        "alvo": "toulon"
+      }
+    },
+    {
+      "t0": 107.62,
+      "t1": 128.59,
+      "prim": "siegeFall",
+      "em": "toulon",
+      "facao": "franca",
+      "cam": {
+        "move": "close",
+        "alvo": "toulon"
+      }
+    },
+    {
+      "t0": 108.0,
+      "t1": 133.0,
+      "prim": "datedSeal",
+      "ano": 1793,
+      "evento": "Cerco de Toulon"
+    },
+    {
+      "t0": 128.84,
+      "t1": 133.2,
+      "prim": "statFinal",
+      "texto": "General de brigada aos 24 anos",
+      "cam": {
+        "move": "mid"
+      },
+      "centro": true
+    },
+    {
+      "t0": 133.0,
+      "t1": 171.0,
+      "prim": "estandarte",
+      "em": "paris",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 133.64,
+      "t1": 150.69,
+      "prim": "reacao",
+      "em": "paris",
+      "icone": "angry",
+      "cam": {
+        "move": "close",
+        "alvo": "paris"
+      }
+    },
+    {
+      "t0": 142.0,
+      "t1": 156.0,
+      "prim": "datedSeal",
+      "ano": 1795,
+      "evento": "Canhões sobre a revolta realista em Paris"
+    },
+    {
+      "t0": 156.88,
+      "t1": 171.52,
+      "prim": "genealogia",
+      "cam": {
+        "move": "mid"
+      },
+      "pessoas": [
+        {
+          "nome": "Napoleão",
+          "papel": "esposo"
+        },
+        {
+          "nome": "Joséphine de Beauharnais",
+          "papel": "esposa",
+          "casa": "Napoleão"
+        }
+      ]
+    },
+    {
+      "t0": 160.0,
+      "t1": 174.0,
+      "prim": "datedSeal",
+      "ano": 1796,
+      "evento": "Casa com Joséphine"
+    },
+    {
+      "t0": 171.56,
+      "t1": 174.1,
+      "prim": "marchRoute",
+      "rota": [
+        "paris",
+        "alpes"
+      ],
+      "modo": "advance",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "alpes"
+      }
+    },
+    {
+      "t0": 171.56,
+      "t1": 200.96,
+      "prim": "marcador",
+      "em": "alpes",
+      "icone": "montanha"
+    },
+    {
+      "t0": 174.0,
+      "t1": 229.0,
+      "prim": "estandarte",
+      "em": "rivoli",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 174.14,
+      "t1": 180.47,
+      "prim": "kicker",
+      "texto": "A campanha da Itália inventa a sua lenda",
+      "cam": {
+        "move": "regional",
+        "alvo": "lodi"
+      }
+    },
+    {
+      "t0": 185.88,
+      "t1": 189.26,
+      "prim": "siegeFall",
+      "em": "lodi",
+      "facao": "franca",
+      "cam": {
+        "move": "close",
+        "alvo": "lodi"
+      }
+    },
+    {
+      "t0": 185.88,
+      "t1": 200.0,
+      "prim": "marcador",
+      "em": "lodi",
+      "icone": "ponte"
+    },
+    {
+      "t0": 189.48,
+      "t1": 193.64,
+      "prim": "siegeFall",
+      "em": "arcole",
+      "facao": "franca",
+      "cam": {
+        "move": "close",
+        "alvo": "arcole"
+      }
+    },
+    {
+      "t0": 193.68,
+      "t1": 200.96,
+      "prim": "siegeFall",
+      "em": "rivoli",
+      "facao": "franca",
+      "cam": {
+        "move": "close",
+        "alvo": "rivoli"
+      }
+    },
+    {
+      "t0": 193.68,
+      "t1": 201.0,
+      "prim": "realce",
+      "regiao": "italia",
+      "pulso": true
+    },
+    {
+      "t0": 194.0,
+      "t1": 213.0,
+      "prim": "datedSeal",
+      "ano": 1797,
+      "evento": "Rivoli quebra a Áustria no norte da Itália"
+    },
+    {
+      "t0": 206.92,
+      "t1": 213.26,
+      "prim": "diplomacia",
+      "entre": [
+        "franca",
+        "austria"
+      ],
+      "icone": "paz",
+      "em": "rivoli",
+      "texto": "Tratado de Campo Formio"
+    },
+    {
+      "t0": 213.64,
+      "t1": 219.54,
+      "prim": "territoryAdvance",
+      "para": [
+        "italia",
+        "belgica"
+      ],
+      "facao": "franca",
+      "fica": true,
+      "cam": {
+        "move": "regional",
+        "alvo": "italiaC"
+      },
+      "pulso": true
+    },
+    {
+      "t0": 213.64,
+      "t1": 300.0,
+      "prim": "regionLabel",
+      "regiao": "italia",
+      "bandeira": "franca",
+      "texto": "Itália francesa",
+      "pulso": true
+    },
+    {
+      "t0": 215.0,
+      "t1": 225.0,
+      "prim": "regionLabel",
+      "regiao": "belgica",
+      "bandeira": "franca",
+      "texto": "cedida à França",
+      "pulso": true
+    },
+    {
+      "t0": 215.0,
+      "t1": 300.0,
+      "prim": "estandarte",
+      "em": "rivoli",
+      "facao": "franca"
+    },
+    {
+      "t0": 229.5,
+      "t1": 238.41,
+      "prim": "datedSeal",
+      "ano": 1798,
+      "evento": "Expedição ao Egito"
+    },
+    {
+      "t0": 229.5,
+      "t1": 262.0,
+      "prim": "realce",
+      "regiao": "egito",
+      "pulso": true
+    },
+    {
+      "t0": 238.0,
+      "t1": 274.0,
+      "prim": "estandarte",
+      "em": "alexandria",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 238.54,
+      "t1": 244.86,
+      "prim": "marchRoute",
+      "rota": [
+        "toulon",
+        "malta",
+        "alexandria"
+      ],
+      "modo": "advance",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "alexandria"
+      }
+    },
+    {
+      "t0": 244.96,
+      "t1": 250.3,
+      "prim": "siegeFall",
+      "em": "piramides",
+      "facao": "franca",
+      "cam": {
+        "move": "close",
+        "alvo": "piramides"
+      }
+    },
+    {
+      "t0": 244.96,
+      "t1": 262.0,
+      "prim": "marcador",
+      "em": "alexandria",
+      "icone": "mesquita"
+    },
+    {
+      "t0": 250.4,
+      "t1": 261.98,
+      "prim": "marcador",
+      "em": "aboukir",
+      "cam": {
+        "move": "close",
+        "alvo": "aboukir"
+      },
+      "icone": "ancora"
+    },
+    {
+      "t0": 252.0,
+      "t1": 262.0,
+      "prim": "callout",
+      "em": "aboukir",
+      "texto": "Nelson destrói a frota francesa"
+    },
+    {
+      "t0": 252.0,
+      "t1": 262.0,
+      "prim": "reacao",
+      "em": "aboukir",
+      "icone": "fire"
+    },
+    {
+      "t0": 266.62,
+      "t1": 273.84,
+      "prim": "marchRoute",
+      "rota": [
+        "alexandria",
+        "paris"
+      ],
+      "modo": "advance",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "paris"
+      }
+    },
+    {
+      "t0": 274.0,
+      "t1": 319.0,
+      "prim": "estandarte",
+      "em": "paris",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 274.34,
+      "t1": 289.72,
+      "prim": "leaderReveal",
+      "facao": "franca",
+      "em": "paris",
+      "rotulo": "Primeiro Cônsul",
+      "cam": {
+        "move": "push-in",
+        "alvo": "paris"
+      }
+    },
+    {
+      "t0": 280.0,
+      "t1": 295.0,
+      "prim": "datedSeal",
+      "ano": 1799,
+      "evento": "18 de Brumário — toma o poder"
+    },
+    {
+      "t0": 295.1,
+      "t1": 305.7,
+      "prim": "marchRoute",
+      "rota": [
+        "paris",
+        "alpes",
+        "marengo"
+      ],
+      "modo": "advance",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "marengo"
+      }
+    },
+    {
+      "t0": 295.1,
+      "t1": 305.7,
+      "prim": "marcador",
+      "em": "alpes",
+      "icone": "montanha"
+    },
+    {
+      "t0": 300.0,
+      "t1": 315.0,
+      "prim": "siegeFall",
+      "em": "marengo",
+      "facao": "franca",
+      "cam": {
+        "move": "close",
+        "alvo": "marengo"
+      }
+    },
+    {
+      "t0": 300.0,
+      "t1": 315.0,
+      "prim": "marcador",
+      "em": "marengo",
+      "icone": "espadas"
+    },
+    {
+      "t0": 301.0,
+      "t1": 316.0,
+      "prim": "datedSeal",
+      "ano": 1800,
+      "evento": "Marengo garante o poder"
+    },
+    {
+      "t0": 306.38,
+      "t1": 315.91,
+      "prim": "conceito",
+      "texto": "Código Civil (1804) — refunda a lei francesa",
+      "cam": {
+        "move": "mid"
+      }
+    },
+    {
+      "t0": 319.0,
+      "t1": 347.0,
+      "prim": "estandarte",
+      "em": "paris",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 319.2,
+      "t1": 941.72,
+      "prim": "leaderReveal",
+      "facao": "franca",
+      "em": "paris",
+      "rotulo": "Imperador dos Franceses",
+      "cam": {
+        "move": "push-in",
+        "alvo": "paris",
+        "orbita": true
+      },
+      "fica": true
+    },
+    {
+      "t0": 319.2,
+      "t1": 340.76,
+      "prim": "marcador",
+      "em": "paris",
+      "icone": "coroa"
+    },
+    {
+      "t0": 320.0,
+      "t1": 340.0,
+      "prim": "datedSeal",
+      "ano": 1804,
+      "evento": "Coroação em Notre-Dame"
+    },
+    {
+      "t0": 335.54,
+      "t1": 340.76,
+      "prim": "estandarte",
+      "em": "paris",
+      "facao": "franca"
+    },
+    {
+      "t0": 340.8,
+      "t1": 346.98,
+      "prim": "diplomacia",
+      "entre": [
+        "franca",
+        "coligacao"
+      ],
+      "icone": "guerra",
+      "em": "imperio"
+    },
+    {
+      "t0": 347.02,
+      "t1": 356.98,
+      "prim": "marcador",
+      "em": "trafalgar",
+      "cam": {
+        "move": "close",
+        "alvo": "trafalgar"
+      },
+      "icone": "ancora"
+    },
+    {
+      "t0": 348.0,
+      "t1": 364.0,
+      "prim": "datedSeal",
+      "ano": 1805,
+      "evento": "Trafalgar — o mar é da Inglaterra"
+    },
+    {
+      "t0": 350.0,
+      "t1": 364.0,
+      "prim": "reacao",
+      "em": "trafalgar",
+      "icone": "fire"
+    },
+    {
+      "t0": 357.0,
+      "t1": 364.0,
+      "prim": "realce",
+      "regiao": "inglaterra",
+      "pulso": true
+    },
+    {
+      "t0": 368.0,
+      "t1": 406.0,
+      "prim": "estandarte",
+      "em": "austerlitz",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 368.62,
+      "t1": 385.16,
+      "prim": "convergencia",
+      "de": [
+        "viena",
+        "moscou"
+      ],
+      "alvo": "austerlitz",
+      "cam": {
+        "move": "regional",
+        "alvo": "austerlitz"
+      }
+    },
+    {
+      "t0": 385.2,
+      "t1": 393.45,
+      "prim": "siegeFall",
+      "em": "austerlitz",
+      "facao": "franca",
+      "cam": {
+        "move": "close",
+        "alvo": "austerlitz"
+      }
+    },
+    {
+      "t0": 385.2,
+      "t1": 398.0,
+      "prim": "marcador",
+      "em": "austerlitz",
+      "icone": "espadas"
+    },
+    {
+      "t0": 406.0,
+      "t1": 431.0,
+      "prim": "estandarte",
+      "em": "berlim",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 406.4,
+      "t1": 419.92,
+      "prim": "territoryAdvance",
+      "para": [
+        "alemanha"
+      ],
+      "facao": "franca",
+      "fica": true,
+      "cam": {
+        "move": "regional",
+        "alvo": "berlim"
+      },
+      "pulso": true
+    },
+    {
+      "t0": 406.4,
+      "t1": 420.0,
+      "prim": "realce",
+      "regiao": "alemanha",
+      "pulso": true
+    },
+    {
+      "t0": 407.0,
+      "t1": 420.0,
+      "prim": "datedSeal",
+      "ano": 1806,
+      "evento": "Fim do Sacro Império; Confederação do Reno"
+    },
+    {
+      "t0": 408.0,
+      "t1": 420.0,
+      "prim": "regionLabel",
+      "regiao": "alemanha",
+      "bandeira": "franca",
+      "texto": "Confederação do Reno",
+      "pulso": true
+    },
+    {
+      "t0": 419.96,
+      "t1": 431.0,
+      "prim": "marcador",
+      "em": "jena",
+      "icone": "espadas"
+    },
+    {
+      "t0": 419.96,
+      "t1": 431.36,
+      "prim": "siegeFall",
+      "em": "jena",
+      "facao": "franca",
+      "cam": {
+        "move": "close",
+        "alvo": "jena"
+      }
+    },
+    {
+      "t0": 421.0,
+      "t1": 431.0,
+      "prim": "siegeFall",
+      "em": "auerstedt",
+      "facao": "franca"
+    },
+    {
+      "t0": 425.0,
+      "t1": 431.36,
+      "prim": "marchRoute",
+      "rota": [
+        "jena",
+        "berlim"
+      ],
+      "modo": "advance",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "berlim"
+      }
+    },
+    {
+      "t0": 425.0,
+      "t1": 470.0,
+      "prim": "estandarte",
+      "em": "berlim",
+      "facao": "franca"
+    },
+    {
+      "t0": 431.0,
+      "t1": 450.0,
+      "prim": "estandarte",
+      "em": "tilsit",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 431.54,
+      "t1": 435.95,
+      "prim": "siegeFall",
+      "em": "friedland",
+      "facao": "franca",
+      "cam": {
+        "move": "close",
+        "alvo": "friedland"
+      }
+    },
+    {
+      "t0": 431.54,
+      "t1": 436.0,
+      "prim": "marcador",
+      "em": "friedland",
+      "icone": "espadas"
+    },
+    {
+      "t0": 431.54,
+      "t1": 436.0,
+      "prim": "convergencia",
+      "de": [
+        "niemen"
+      ],
+      "alvo": "friedland"
+    },
+    {
+      "t0": 436.0,
+      "t1": 446.38,
+      "prim": "diplomacia",
+      "entre": [
+        "franca",
+        "russia"
+      ],
+      "icone": "paz",
+      "em": "tilsit",
+      "texto": "Paz de Tilsit",
+      "cam": {
+        "move": "push-in",
+        "alvo": "tilsit"
+      }
+    },
+    {
+      "t0": 437.0,
+      "t1": 450.0,
+      "prim": "datedSeal",
+      "ano": 1807,
+      "evento": "Tilsit — o auge do império"
+    },
+    {
+      "t0": 438.0,
+      "t1": 460.0,
+      "prim": "territoryAdvance",
+      "para": [
+        "polonia"
+      ],
+      "facao": "franca",
+      "fica": true,
+      "pulso": true
+    },
+    {
+      "t0": 438.0,
+      "t1": 500.0,
+      "prim": "regionLabel",
+      "regiao": "polonia",
+      "bandeira": "franca",
+      "texto": "Ducado de Varsóvia",
+      "pulso": true
+    },
+    {
+      "t0": 440.0,
+      "t1": 450.0,
+      "prim": "leaderReveal",
+      "facao": "russia",
+      "em": "tilsit",
+      "rotulo": "Czar Alexandre I",
+      "cam": {
+        "move": "push-in",
+        "alvo": "tilsit",
+        "orbita": true
+      }
+    },
+    {
+      "t0": 440.0,
+      "t1": 500.0,
+      "prim": "estandarte",
+      "em": "varsovia",
+      "facao": "franca"
+    },
+    {
+      "t0": 446.42,
+      "t1": 450.76,
+      "prim": "callout",
+      "em": "imperio",
+      "texto": "De Madri a Varsóvia, a Europa responde a Paris",
+      "cam": {
+        "move": "drift",
+        "alvo": "imperio"
+      }
+    },
+    {
+      "t0": 450.0,
+      "t1": 514.0,
+      "prim": "estandarte",
+      "em": "imperio",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 450.86,
+      "t1": 490.68,
+      "prim": "genealogia",
+      "cam": {
+        "move": "drift",
+        "alvo": "imperio"
+      },
+      "pessoas": [
+        {
+          "id": "nap",
+          "nome": "Napoleão",
+          "papel": "imperador",
+          "geracao": 0
+        },
+        {
+          "id": "jose",
+          "nome": "José",
+          "papel": "rei de Nápoles e Espanha",
+          "geracao": 1
+        },
+        {
+          "id": "luis",
+          "nome": "Luís",
+          "papel": "rei da Holanda",
+          "geracao": 1
+        },
+        {
+          "id": "jer",
+          "nome": "Jerônimo",
+          "papel": "rei da Vestfália",
+          "geracao": 1
+        },
+        {
+          "id": "caro",
+          "nome": "Carolina",
+          "papel": "irmã",
+          "geracao": 1
+        },
+        {
+          "id": "murat",
+          "nome": "Murat",
+          "papel": "rei de Nápoles",
+          "geracao": 1,
+          "casa": "caro"
+        }
+      ],
+      "layout": "arvore",
+      "ligacoes": [
+        [
+          "nap",
+          "jose"
+        ],
+        [
+          "nap",
+          "luis"
+        ],
+        [
+          "nap",
+          "jer"
+        ],
+        [
+          "nap",
+          "caro"
+        ]
+      ]
+    },
+    {
+      "t0": 460.46,
+      "t1": 490.0,
+      "prim": "territoryAdvance",
+      "para": [
+        "holanda"
+      ],
+      "facao": "franca",
+      "fica": true,
+      "pulso": true
+    },
+    {
+      "t0": 461.0,
+      "t1": 490.0,
+      "prim": "estandarte",
+      "em": "napoles",
+      "facao": "franca"
+    },
+    {
+      "t0": 465.12,
+      "t1": 490.0,
+      "prim": "estandarte",
+      "em": "amsterda",
+      "facao": "franca"
+    },
+    {
+      "t0": 468.08,
+      "t1": 490.0,
+      "prim": "estandarte",
+      "em": "kassel",
+      "facao": "franca"
+    },
+    {
+      "t0": 495.26,
+      "t1": 514.39,
+      "prim": "conceito",
+      "texto": "Bloqueio Continental — fechar a costa à Inglaterra",
+      "cam": {
+        "move": "mid"
+      }
+    },
+    {
+      "t0": 514.0,
+      "t1": 548.0,
+      "prim": "estandarte",
+      "em": "madri",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 514.68,
+      "t1": 519.8,
+      "prim": "marchRoute",
+      "rota": [
+        "paris",
+        "madri"
+      ],
+      "modo": "advance",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "madri"
+      }
+    },
+    {
+      "t0": 514.68,
+      "t1": 527.0,
+      "prim": "realce",
+      "regiao": "espanha",
+      "pulso": true
+    },
+    {
+      "t0": 519.84,
+      "t1": 526.52,
+      "prim": "territoryAdvance",
+      "para": [
+        "espanha"
+      ],
+      "facao": "franca",
+      "fica": true,
+      "cam": {
+        "move": "regional",
+        "alvo": "madri"
+      },
+      "pulso": true
+    },
+    {
+      "t0": 519.84,
+      "t1": 560.0,
+      "prim": "regionLabel",
+      "regiao": "espanha",
+      "bandeira": "franca",
+      "texto": "José, rei da Espanha",
+      "pulso": true
+    },
+    {
+      "t0": 520.0,
+      "t1": 537.0,
+      "prim": "datedSeal",
+      "ano": 1808,
+      "evento": "José posto no trono de Madri"
+    },
+    {
+      "t0": 520.0,
+      "t1": 548.0,
+      "prim": "estandarte",
+      "em": "madri",
+      "facao": "franca"
+    },
+    {
+      "t0": 526.72,
+      "t1": 537.89,
+      "prim": "reacao",
+      "em": "madri",
+      "icone": "angry",
+      "cam": {
+        "move": "close",
+        "alvo": "madri"
+      }
+    },
+    {
+      "t0": 531.0,
+      "t1": 542.0,
+      "prim": "reacao",
+      "em": "madri",
+      "icone": "fire"
+    },
+    {
+      "t0": 542.02,
+      "t1": 548.7,
+      "prim": "callout",
+      "em": "madri",
+      "texto": "A úlcera espanhola — guerrilha sem fim"
+    },
+    {
+      "t0": 548.0,
+      "t1": 598.0,
+      "prim": "estandarte",
+      "em": "imperio",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 548.9,
+      "t1": 577.84,
+      "prim": "genealogia",
+      "cam": {
+        "move": "mid"
+      },
+      "pessoas": [
+        {
+          "id": "nap",
+          "nome": "Napoleão",
+          "papel": "imperador",
+          "geracao": 0
+        },
+        {
+          "id": "jose",
+          "nome": "Joséphine",
+          "papel": "1ª esposa (sem filhos, divórcio 1809)",
+          "geracao": 0,
+          "casa": "nap",
+          "rompido": true
+        },
+        {
+          "id": "marie",
+          "nome": "Maria Luísa",
+          "papel": "2ª esposa (Áustria)",
+          "geracao": 0,
+          "casa": "nap"
+        },
+        {
+          "id": "nap2",
+          "nome": "Napoleão II",
+          "papel": "Rei de Roma (1811)",
+          "geracao": 1
+        }
+      ],
+      "layout": "arvore",
+      "ligacoes": [
+        [
+          "nap",
+          "nap2"
+        ],
+        [
+          "marie",
+          "nap2"
+        ]
+      ]
+    },
+    {
+      "t0": 556.0,
+      "t1": 577.0,
+      "prim": "datedSeal",
+      "ano": 1811,
+      "evento": "Nasce o Rei de Roma"
+    },
+    {
+      "t0": 577.88,
+      "t1": 588.02,
+      "prim": "territoryAdvance",
+      "para": [
+        "franca",
+        "belgica",
+        "holanda",
+        "italia",
+        "alemanha",
+        "polonia",
+        "espanha"
+      ],
+      "facao": "franca",
+      "fica": true,
+      "cam": {
+        "move": "pull-back",
+        "alvo": "imperio",
+        "orbita": true
+      },
+      "pulso": true
+    },
+    {
+      "t0": 578.0,
+      "t1": 598.0,
+      "prim": "datedSeal",
+      "ano": 1812,
+      "evento": "O império no seu tamanho máximo"
+    },
+    {
+      "t0": 588.06,
+      "t1": 593.84,
+      "prim": "diplomacia",
+      "entre": [
+        "franca",
+        "russia"
+      ],
+      "icone": "guerra",
+      "em": "moscou"
+    },
+    {
+      "t0": 598.0,
+      "t1": 640.0,
+      "prim": "estandarte",
+      "em": "niemen",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 598.98,
+      "t1": 619.19,
+      "prim": "marchRoute",
+      "rota": [
+        "niemen",
+        "vilnius",
+        "smolensk",
+        "borodino",
+        "moscou"
+      ],
+      "modo": "advance",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "smolensk"
+      }
+    },
+    {
+      "t0": 619.3,
+      "t1": 646.0,
+      "prim": "realce",
+      "regiao": "russia",
+      "pulso": true
+    },
+    {
+      "t0": 622.64,
+      "t1": 638.48,
+      "prim": "reacao",
+      "em": "smolensk",
+      "icone": "fire",
+      "cam": {
+        "move": "track",
+        "alvo": "borodino"
+      }
+    },
+    {
+      "t0": 638.56,
+      "t1": 654.48,
+      "prim": "siegeFall",
+      "em": "borodino",
+      "facao": "franca",
+      "cam": {
+        "move": "close",
+        "alvo": "borodino"
+      }
+    },
+    {
+      "t0": 638.56,
+      "t1": 655.0,
+      "prim": "marcador",
+      "em": "borodino",
+      "icone": "espadas"
+    },
+    {
+      "t0": 640.0,
+      "t1": 678.0,
+      "prim": "estandarte",
+      "em": "moscou",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 660.02,
+      "t1": 666.94,
+      "prim": "marchRoute",
+      "rota": [
+        "borodino",
+        "moscou"
+      ],
+      "modo": "advance",
+      "facao": "franca",
+      "cam": {
+        "move": "push-in",
+        "alvo": "moscou"
+      }
+    },
+    {
+      "t0": 666.98,
+      "t1": 678.36,
+      "prim": "reacao",
+      "em": "moscou",
+      "icone": "fire",
+      "cam": {
+        "move": "close",
+        "alvo": "moscou"
+      }
+    },
+    {
+      "t0": 667.0,
+      "t1": 678.0,
+      "prim": "callout",
+      "em": "moscou",
+      "texto": "Moscou em chamas, incendiada pelos russos"
+    },
+    {
+      "t0": 678.0,
+      "t1": 735.0,
+      "prim": "estandarte",
+      "em": "berezina",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 678.4,
+      "t1": 709.38,
+      "prim": "marchRoute",
+      "rota": [
+        "moscou",
+        "borodino",
+        "smolensk",
+        "berezina",
+        "niemen"
+      ],
+      "modo": "retreat",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "berezina"
+      }
+    },
+    {
+      "t0": 685.0,
+      "t1": 710.0,
+      "prim": "reacao",
+      "em": "estepeRussa",
+      "icone": "fear"
+    },
+    {
+      "t0": 694.0,
+      "t1": 727.0,
+      "prim": "callout",
+      "em": "estepeRussa",
+      "texto": "Abaixo de 30 graus negativos"
+    },
+    {
+      "t0": 700.0,
+      "t1": 710.0,
+      "prim": "reacao",
+      "em": "estepeRussa",
+      "icone": "cry"
+    },
+    {
+      "t0": 710.24,
+      "t1": 727.0,
+      "prim": "convergencia",
+      "de": [
+        "smolensk",
+        "moscou"
+      ],
+      "alvo": "berezina",
+      "cam": {
+        "move": "close",
+        "alvo": "berezina"
+      }
+    },
+    {
+      "t0": 711.0,
+      "t1": 727.0,
+      "prim": "siegeFall",
+      "em": "berezina",
+      "facao": "russia",
+      "cam": {
+        "move": "close",
+        "alvo": "berezina"
+      }
+    },
+    {
+      "t0": 711.0,
+      "t1": 727.0,
+      "prim": "marcador",
+      "em": "berezina",
+      "icone": "ponte"
+    },
+    {
+      "t0": 719.0,
+      "t1": 727.0,
+      "prim": "reacao",
+      "em": "berezina",
+      "icone": "skull"
+    },
+    {
+      "t0": 727.38,
+      "t1": 735.02,
+      "prim": "statFinal",
+      "texto": "De +600 mil, menos de 100 mil voltam vivos",
+      "cam": {
+        "move": "pull-back",
+        "alvo": "borodino"
+      },
+      "centro": true
+    },
+    {
+      "t0": 735.0,
+      "t1": 779.0,
+      "prim": "estandarte",
+      "em": "paris",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 735.06,
+      "t1": 743.08,
+      "prim": "marchRoute",
+      "rota": [
+        "berezina",
+        "paris"
+      ],
+      "modo": "advance",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "paris"
+      }
+    },
+    {
+      "t0": 749.76,
+      "t1": 754.36,
+      "prim": "convergencia",
+      "de": [
+        "moscou",
+        "berlim",
+        "viena"
+      ],
+      "alvo": "leipzig",
+      "cam": {
+        "move": "regional",
+        "alvo": "leipzig"
+      }
+    },
+    {
+      "t0": 760.56,
+      "t1": 770.34,
+      "prim": "siegeFall",
+      "em": "leipzig",
+      "facao": "coligacao",
+      "cam": {
+        "move": "close",
+        "alvo": "leipzig"
+      }
+    },
+    {
+      "t0": 760.56,
+      "t1": 770.34,
+      "prim": "marcador",
+      "em": "leipzig",
+      "icone": "espadas"
+    },
+    {
+      "t0": 761.0,
+      "t1": 773.0,
+      "prim": "datedSeal",
+      "ano": 1813,
+      "evento": "Leipzig — a Batalha das Nações"
+    },
+    {
+      "t0": 773.56,
+      "t1": 779.1,
+      "prim": "marchRoute",
+      "rota": [
+        "leipzig",
+        "paris"
+      ],
+      "modo": "retreat",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "paris"
+      }
+    },
+    {
+      "t0": 779.0,
+      "t1": 808.0,
+      "prim": "estandarte",
+      "em": "paris",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 779.14,
+      "t1": 786.46,
+      "prim": "convergencia",
+      "de": [
+        "reno",
+        "leipzig"
+      ],
+      "alvo": "paris",
+      "cam": {
+        "move": "push-in",
+        "alvo": "paris"
+      }
+    },
+    {
+      "t0": 782.0,
+      "t1": 795.0,
+      "prim": "datedSeal",
+      "ano": 1814,
+      "evento": "Os aliados tomam Paris"
+    },
+    {
+      "t0": 790.7,
+      "t1": 794.92,
+      "prim": "callout",
+      "em": "paris",
+      "texto": "6 de abril de 1814 — Napoleão abdica"
+    },
+    {
+      "t0": 794.96,
+      "t1": 806.83,
+      "prim": "marchRoute",
+      "rota": [
+        "paris",
+        "elba"
+      ],
+      "modo": "retreat",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "elba"
+      }
+    },
+    {
+      "t0": 800.0,
+      "t1": 820.0,
+      "prim": "marcador",
+      "em": "elba",
+      "icone": "estrela",
+      "fica": true
+    },
+    {
+      "t0": 801.0,
+      "t1": 807.0,
+      "prim": "callout",
+      "em": "elba",
+      "texto": "Elba — um reino de menos de 30 km"
+    },
+    {
+      "t0": 808.0,
+      "t1": 848.0,
+      "prim": "estandarte",
+      "em": "paris",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 808.16,
+      "t1": 817.74,
+      "prim": "marchRoute",
+      "rota": [
+        "elba",
+        "golfeJuan",
+        "paris"
+      ],
+      "modo": "advance",
+      "facao": "franca",
+      "cam": {
+        "move": "track",
+        "alvo": "paris"
+      }
+    },
+    {
+      "t0": 810.0,
+      "t1": 830.0,
+      "prim": "datedSeal",
+      "ano": 1815,
+      "evento": "Os Cem Dias"
+    },
+    {
+      "t0": 825.14,
+      "t1": 830.8,
+      "prim": "callout",
+      "em": "paris",
+      "texto": "Reentra em Paris; o rei foge"
+    },
+    {
+      "t0": 837.0,
+      "t1": 861.0,
+      "prim": "estandarte",
+      "em": "waterloo",
+      "facao": "franca",
+      "lider": true
+    },
+    {
+      "t0": 837.04,
+      "t1": 848.36,
+      "prim": "convergencia",
+      "de": [
+        "londres",
+        "berlim"
+      ],
+      "alvo": "waterloo",
+      "cam": {
+        "move": "regional",
+        "alvo": "waterloo"
+      }
+    },
+    {
+      "t0": 848.4,
+      "t1": 856.12,
+      "prim": "siegeFall",
+      "em": "waterloo",
+      "facao": "coligacao",
+      "cam": {
+        "move": "close",
+        "alvo": "waterloo"
+      }
+    },
+    {
+      "t0": 848.4,
+      "t1": 856.12,
+      "prim": "marcador",
+      "em": "waterloo",
+      "icone": "espadas"
+    },
+    {
+      "t0": 856.24,
+      "t1": 860.96,
+      "prim": "callout",
+      "em": "waterloo",
+      "texto": "Quatro dias depois, a segunda abdicação"
+    },
+    {
+      "t0": 861.0,
+      "t1": 864.82,
+      "prim": "callout",
+      "em": "imperio",
+      "texto": "Desta vez, não há ilha perto da Europa",
+      "cam": {
+        "move": "pull-back"
+      }
+    },
+    {
+      "t0": 861.0,
+      "t1": 895.0,
+      "prim": "estandarte",
+      "em": "santaHelena",
+      "facao": "franca",
+      "lider": true,
+      "cam": {
+        "move": "space",
+        "alvo": "rotaExilio"
+      }
+    },
+    {
+      "t0": 861.2,
+      "t1": 871.0,
+      "prim": "conexao",
+      "de": [
+        "paris",
+        "santaHelena"
+      ]
+    },
+    {
+      "t0": 865.12,
+      "t1": 877.96,
+      "prim": "marcador",
+      "em": "santaHelena",
+      "icone": "ancora",
+      "fica": true,
+      "cam": {
+        "move": "space",
+        "alvo": "rotaExilio"
+      }
+    },
+    {
+      "t0": 866.0,
+      "t1": 878.0,
+      "prim": "callout",
+      "em": "santaHelena",
+      "texto": "Santa Helena — a +1.800 km da África"
+    },
+    {
+      "t0": 878.0,
+      "t1": 888.7,
+      "prim": "datedSeal",
+      "ano": 1821,
+      "evento": "Morre em Santa Helena, aos 51 anos"
+    },
+    {
+      "t0": 888.74,
+      "t1": 894.88,
+      "prim": "genealogia",
+      "cam": {
+        "move": "mid",
+        "alvo": "viena"
+      },
+      "pessoas": [
+        {
+          "nome": "Napoleão II",
+          "papel": "o Rei de Roma — morre jovem em Viena, sem reinar"
+        }
+      ]
+    },
+    {
+      "t0": 895.12,
+      "t1": 902.88,
+      "prim": "callout",
+      "em": "imperio",
+      "texto": "O império some; ficam as leis",
+      "cam": {
+        "move": "pull-back",
+        "alvo": "imperio",
+        "orbita": true
+      }
+    },
+    {
+      "t0": 902.92,
+      "t1": 915.87,
+      "prim": "conceito",
+      "texto": "O Código Civil de 1804: base do direito na França, Bélgica, Itália e na América Latina",
+      "cam": {
+        "move": "drift",
+        "alvo": "imperio"
+      }
+    },
+    {
+      "t0": 932.8,
+      "t1": 941.36,
+      "prim": "statFinal",
+      "texto": "Como impedir que outro Napoleão refizesse tudo em pouco mais de 20 anos?",
+      "cam": {
+        "move": "mid"
+      },
+      "centro": true
+    },
+    {
+      "t0": 939.0,
+      "t1": 941.72,
+      "prim": "fade"
+    }
+  ]
+}
