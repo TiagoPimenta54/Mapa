@@ -64,7 +64,7 @@ bandeira + retrato + nome, espadas/setas brancas e caixas de ano embaixo.
 ## Nota de engenharia
 
 A best-practice oficial do Remotion sugere MapLibre para mapas com flyover. Optei por **SVG + d3-geo**
-de propósito: roda offline dentro do ZIP, sem tiles/WebGL/chaves de API. As demais regras estão
+de propósito: roda offline (tudo no repositório), sem tiles/WebGL/chaves de API. As demais regras estão
 seguidas: animação só por `useCurrentFrame()`/`interpolate()`/`Easing` (zero CSS animation), câmera por
 keyframes interpolados, fontes via `@remotion/google-fonts`, duração derivada do spec.
 

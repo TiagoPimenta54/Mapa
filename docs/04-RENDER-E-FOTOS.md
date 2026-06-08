@@ -2,7 +2,8 @@
 
 ## Rodar
 ```bash
-unzip napoleao-mapa-remotion.zip && cd napoleao-mapa
+git clone https://github.com/TiagoPimenta54/Mapa.git   # 1ª vez (depois: git pull)
+cd Mapa
 npm install
 npx remotion studio          # preview ao vivo (comp "Napoleao", 1920x1080, 30fps)
 ```

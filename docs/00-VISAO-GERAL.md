@@ -9,7 +9,9 @@ roteiro (.txt)  →  locução + word-json (Darkvi)  →  spec.json  →  render
 - **Roteiro**: narração crua (vide o roteirista). Vira locução no Darkvi.
 - **Word-json**: cada palavra com `start`/`end`. É a régua de tempo dos eventos.
 - **spec.json**: o vídeo inteiro como dado (este projeto lê `src/data/spec.json`). Quem escreve isto sou eu (Claude), casando cada beat no `t` real do word-json. **Contrato completo → `01-SPEC.md`.**
-- **Render**: você roda no Claude Code/PC (`npm install` + `npx remotion studio`). Eu não renderizo; eu escrevo o spec e ajusto o motor.
+- **Render**: você roda no Claude Code/PC a partir do repo (`git pull` → `npm install` → `npx remotion studio`).
+  Eu não renderizo; eu escrevo o spec e ajusto o motor. **Versionamento**: o repo `TiagoPimenta54/Mapa`
+  é a fonte da verdade — eu entrego os arquivos, você dá `git commit/push`.
 
 ## Mapa de arquivos
 

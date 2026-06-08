@@ -26,7 +26,8 @@ roteiro (.txt)  →  locução + word-json (Darkvi)  →  spec.json  →  render
 
 1. **Roteiro** — narração documentário, presente, cadeia de causa e consequência, densa em nomes/datas/
    números/parentescos. Cada coisa dita tem que ser "animável no mapa".
-2. **Locução + word-json** — gerados no Darkvi; o word-json é a régua de tempo (cada palavra com `start`/`end`).
+2. **Locução + word-json** — no Darkvi. A **locução (mp3)** posso gerar por aqui (tenho as ferramentas
+   de TTS do Darkvi); o **word-json** (régua de tempo, cada palavra com `start`/`end`) vem do app Darkvi.
    `meta.duracao` = fim da última palavra.
 3. **spec.json** — o vídeo inteiro como dado. **Eu escrevo**, casando cada beat no `t` real do word-json,
    seguindo `docs/01-SPEC.md` (contrato) + `docs/03-ESTILO.md` (visual).
@@ -36,9 +37,15 @@ roteiro (.txt)  →  locução + word-json (Darkvi)  →  spec.json  →  render
 ## 3. Divisão de trabalho
 
 - **Eu (Claude)**: roteiro, spec.json, e ajustes de motor (novas primitivas, estilo, câmera).
-- **Você (Claude Code / PC)**: rodar, renderizar, e colocar assets (`public/portraits/`, `public/flags/`,
-  `public/narracao.mp3`).
+- **Você (Claude Code / PC)**: rodar, renderizar, colocar assets (`public/portraits/`, `public/flags/`,
+  `public/narracao.mp3`) e **versionar** (`git add/commit/push`).
 - **Iteração**: você manda print → eu ajusto (`cam`, `ll`/`size` de nomes, `TILT`, paleta, etc.).
+
+### Fonte da verdade: GitHub (`TiagoPimenta54/Mapa`)
+O repositório é o lar do projeto e está linkado à memória do projeto (vejo o código como contexto).
+Ciclo: **eu entrego arquivos novos/alterados aqui → você dá `git add/commit/push` → o repo atualiza**.
+Eu **não** faço commits/push direto no GitHub; quem versiona é você. O `.gitignore` já ignora
+`node_modules` e `out/`.
 
 ## 4. Para um vídeo NOVO (passo a passo) — detalhe em `docs/05-PLAYBOOK.md`
 
@@ -80,6 +87,8 @@ roteiro (.txt)  →  locução + word-json (Darkvi)  →  spec.json  →  render
 ## 7. Rodar (resumo)
 
 ```bash
+git clone https://github.com/TiagoPimenta54/Mapa.git   # 1ª vez (ou: git pull p/ atualizar)
+cd Mapa
 npm install
 npx remotion studio                      # preview ao vivo (comp "Napoleao", 1920x1080, 30fps)
 npx remotion render Napoleao out/video.mp4

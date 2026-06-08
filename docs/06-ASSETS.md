@@ -1,6 +1,6 @@
 # 06 — Assets (bandeiras, retratos, ícones)
 
-Tudo fica em `public/` e é referenciado por `staticFile(...)`, então roda offline (vai no ZIP).
+Tudo fica em `public/` e é referenciado por `staticFile(...)`, então roda offline (tudo versionado no repo).
 
 ## Bandeiras — `public/flags/<iso2>.svg`
 O motor mapeia facção → arquivo em `FLAGS` (no topo de `MapScene.tsx`). Sem o arquivo, cai no
